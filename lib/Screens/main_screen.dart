@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'home_screen.dart';
 
-class main_screen extends StatelessWidget {
+class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,7 +93,7 @@ class main_screen extends StatelessWidget {
                 const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => home_screen()),
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()),
                   );
                 },
                 style:ElevatedButton.styleFrom(

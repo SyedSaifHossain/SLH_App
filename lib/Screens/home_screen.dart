@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class home_screen extends StatefulWidget {
+class HomeScreen extends StatefulWidget {  // Fixed class name (convention)
   @override
-  State<home_screen> createState() => _home_screenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _home_screenState extends State<home_screen> {
+class _HomeScreenState extends State<HomeScreen> {
   int selectedFilterIndex = 0;
 
   @override
@@ -19,9 +19,7 @@ class _home_screenState extends State<home_screen> {
           padding: const EdgeInsets.only(left: 20),
           child: Center(
             child: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: () => Navigator.pop(context),
               child: Icon(
                 Icons.keyboard_arrow_left,
                 color: Colors.black,
@@ -30,30 +28,28 @@ class _home_screenState extends State<home_screen> {
             ),
           ),
         ),
-        title: Text("Search"),
-        titleTextStyle: TextStyle(
+        title: const Text("Search"),
+        titleTextStyle: const TextStyle(
           fontSize: 24,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
         centerTitle: true,
-
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: Center(
               child: IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.more_horiz, color: Colors.black, size: 28),
+                icon: const Icon(Icons.more_horiz, color: Colors.black, size: 28),
               ),
             ),
           ),
         ],
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1),
+          preferredSize: const Size.fromHeight(1),
           child: Container(
             color: Colors.grey.shade300,
-
             height: 3,
             width: double.infinity,
           ),
@@ -68,15 +64,15 @@ class _home_screenState extends State<home_screen> {
               child: TextField(
                 decoration: InputDecoration(
                   hintText: "Search your speed.....",
-                  hintStyle: TextStyle(
+                  hintStyle: const TextStyle(
                     fontSize: 18,
                     color: Color(0xFF575555),
                     fontWeight: FontWeight.bold,
                   ),
                   filled: true,
-                  fillColor: Color(0xFF575555).withValues(alpha: 0.5),
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.all(12),
+                  fillColor: const Color(0xFF575555).withValues(alpha: 0.5),
+                  prefixIcon: const Padding(
+                    padding: EdgeInsets.all(12),
                     child: Icon(
                       Icons.search,
                       color: Color(0xFF575555),
@@ -87,55 +83,55 @@ class _home_screenState extends State<home_screen> {
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide.none,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide.none,
-                  ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 12),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 12),
                 ),
               ),
             ),
 
-            // Car Brand Filters
-            Center(
-              child: SizedBox(
-                height: 80,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: 4,
-                  itemBuilder: (context, index) {
-                    List<String> icons = [
-                      "assets/icons/stairingicon.png",
-                      "assets/icons/ferrariicon.png",
-                      "assets/icons/teslaicon.png",
-                      "assets/icons/bmwicon.png",
-                    ];
-                    List<String> labels = ["All", "Ferrari", "Tesla", "BMW"];
-                    return _buildCarBrandFilter(
-                      icons[index],
-                      labels[index],
-                      index,
-                    );
-                  },
-                ),
-              ),
-            ),
+            const SizedBox(height: 20),
 
             Padding(
-              padding: const EdgeInsets.only(top: 5,left: 35, right: 35),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,   // Even spacing
+                children: List.generate(4, (index) {
+                  List<String> icons = [
+                    "assets/icons/stairingicon.png",
+                    "assets/icons/ferrariicon.png",
+                    "assets/icons/teslaicon.png",
+                    "assets/icons/bmwicon.png",
+                  ];
+                  List<String> labels = ["All", "Ferrari", "Tesla", "BMW"];
+
+                  return Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4), // Small gap between chips
+                      child: _buildCarBrandFilter(icons[index], labels[index], index),
+                    ),
+                  );
+                }),
+              ),
+            ),
+
+
+            const SizedBox(height: 20),
+
+            Padding(
+              padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Recommended for you",
+                children: const [
+                  Text(
+                    "Recommended for you",
                     style: TextStyle(
-                      fontSize: 15,
+
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF575555),
+                      color: Color(0xFF393835),
                     ),
                   ),
-
-                  Text("View All",
+                  Text(
+                    "View All",
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
@@ -147,91 +143,76 @@ class _home_screenState extends State<home_screen> {
             ),
 
             const SizedBox(height: 20),
+
             // Car Grid
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: GridView.builder(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 15,
                   mainAxisSpacing: 20,
-                  childAspectRatio: 0.65,
+                  childAspectRatio: 0.7,
                 ),
                 itemCount: 6,
-                itemBuilder: (context, index) {
-                  return _buildCarCard(index);
-                },
+                itemBuilder: (context, index) => _buildCarCard(index),
               ),
             ),
+            const SizedBox(height: 30)
           ],
         ),
       ),
     );
   }
 
-  // Helper method to build car brand filter
+  // ==================== Improved Filter Widget ====================
   Widget _buildCarBrandFilter(String iconPath, String label, int index) {
     bool isSelected = selectedFilterIndex == index;
+
     return GestureDetector(
       onTap: () {
         setState(() {
           selectedFilterIndex = index;
         });
       },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Column(
+      child: Container(
+        height: 40,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          color: isSelected ? Color(0xFF575555).withOpacity(0.7): const Color(0xFF575555).withOpacity(0.3),
+        ),
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Icon with white background when selected
             Container(
-              width: 85,
-              height: 45,
+              width: 26,
+              height: 26,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: Color(0xFF575555).withValues(alpha: 0.5)
+                shape: BoxShape.circle,
+                color: isSelected ? Colors.white : Colors.transparent,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (isSelected)
-                    Container(
-                      width: 20,
-                      height: 20,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color(0xFFFFFFFF),
-                      ),
-                      child: Center(
-                        child: Image.asset(
-                          iconPath,
-                          width: 16,
-                          height: 16,
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                    ),
+              child: Center(
+                child: Image.asset(
+                  iconPath,
+                  width: isSelected ? 22 : 22,
+                  height: isSelected ? 22 : 22,
+                  fit: BoxFit.contain,
+                  color: isSelected ? Colors.black : null,
+                ),
+              ),
+            ),
 
-                  const SizedBox(width: 8),
-                  if (!isSelected)
-                    Image.asset(
-                      iconPath,
-                      width: 16,
-                      height: 16,
-                      fit: BoxFit.contain,
-                    ),
-
-                  const SizedBox(width: 8),
-                  Text(
-                    label,
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF575555),
-                    ),
-                  ),
-                ],
+            const SizedBox(width: 5),
+            // Label
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.w600,
+                color: isSelected ? Color(0xFF000000) : null,
               ),
             ),
           ],
@@ -240,59 +221,35 @@ class _home_screenState extends State<home_screen> {
     );
   }
 
-  // Helper method to build car card
+  // _buildCarCard remains the same (you can keep your existing one)
   Widget _buildCarCard(int index) {
+    // ... your existing car card code (unchanged)
     List<Map<String, String>> cars = [
-      {
-        "name": "Sports Car",
-        "price": "Starting from \$60/day",
-        "image": "assets/images/frontcarimg.png",
-      },
-      {
-        "name": "Luxury Car",
-        "price": "Starting from \$55/day",
-        "image": "assets/images/frontcarimg.png",
-      },
-      {
-        "name": "SUV Car",
-        "price": "Starting from \$70/day",
-        "image": "assets/images/frontcarimg.png",
-      },
-      {
-        "name": "Convertible Car",
-        "price": "Starting from \$95/day",
-        "image": "assets/images/frontcarimg.png",
-      },
-      {
-        "name": "Tesla Model 3",
-        "price": "Starting from \$60/day",
-        "image": "assets/images/frontcarimg.png",
-      },
-      {
-        "name": "Ferrari SF90",
-        "price": "Starting from \$60/day",
-        "image": "assets/images/frontcarimg.png",
-      },
+      {"name": "Sports Car", "price": "Starting from \$60/day", "image": "assets/images/frontcarimg.png"},
+      {"name": "Luxury Car", "price": "Starting from \$55/day", "image": "assets/images/frontcarimg.png"},
+      {"name": "SUV Car", "price": "Starting from \$70/day", "image": "assets/images/frontcarimg.png"},
+      {"name": "Convertible Car", "price": "Starting from \$95/day", "image": "assets/images/frontcarimg.png"},
+      {"name": "Tesla Model 3", "price": "Starting from \$60/day", "image": "assets/images/frontcarimg.png"},
+      {"name": "Ferrari SF90", "price": "Starting from \$60/day", "image": "assets/images/frontcarimg.png"},
     ];
+
 
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFF575555).withValues(alpha: 0.5),
+        color: const Color(0xFF575555).withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 8,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Car Image
           Container(
-
             height: 120,
             width: double.infinity,
             child: Center(
@@ -303,11 +260,9 @@ class _home_screenState extends State<home_screen> {
               ),
             ),
           ),
-          // Car Details Card
           Container(
-            margin: const EdgeInsets.all(8),
-
-            padding: const EdgeInsets.only(top: 8, left: 8, right: 8, bottom: 15),
+            margin: const EdgeInsets.only(left: 4, right: 4),
+            padding: const EdgeInsets.only(top: 18, left: 20, right: 20, bottom: 30),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: Colors.grey.shade100,
@@ -315,39 +270,36 @@ class _home_screenState extends State<home_screen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 8),
                 Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color(0xFF000000),
+                    borderRadius: BorderRadius.circular(13),
+                    color: Colors.black,
                   ),
-
                   child: Text(
                     cars[index]["name"]!,
-                    style: TextStyle(
-                      fontSize: 14,
+                    style: const TextStyle(
+                      fontSize: 10,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFFFFFFFF),
+                      color: Colors.white,
                     ),
                   ),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   cars[index]["price"]!,
-                  style: TextStyle(
-                    fontSize: 12,
+                  style: const TextStyle(
+                    fontSize: 10,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF000000),
+                    color: Colors.black,
                   ),
                 ),
-                const SizedBox(height: 4),
-                Text(
+                const SizedBox(height: 8),
+                const Text(
                   "Details-",
-                  style: TextStyle(fontSize: 12, color: Color(0xFF000000)),
+                  style: TextStyle(fontSize: 10, color: Colors.black),
                 ),
-                const SizedBox(height: 18),
               ],
             ),
           ),
