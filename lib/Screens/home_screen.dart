@@ -167,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // ==================== Improved Filter Widget ====================
+  // Filter Widget
   Widget _buildCarBrandFilter(String iconPath, String label, int index) {
     bool isSelected = selectedFilterIndex == index;
 
@@ -183,39 +183,43 @@ class _HomeScreenState extends State<HomeScreen> {
           borderRadius: BorderRadius.circular(30),
           color: isSelected ? Color(0xFF575555).withOpacity(0.7): const Color(0xFF575555).withOpacity(0.3),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Icon with white background when selected
-            Container(
-              width: 26,
-              height: 26,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: isSelected ? Colors.white : Colors.transparent,
-              ),
-              child: Center(
-                child: Image.asset(
-                  iconPath,
-                  width: isSelected ? 22 : 22,
-                  height: isSelected ? 22 : 22,
-                  fit: BoxFit.contain,
-                  color: isSelected ? Colors.black : null,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 8),
+          child: Row(
+            children: [
+              // Icon with white background when selected
+              Container(
+                width: 26,
+                height: 26,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: isSelected ? Colors.white : Colors.transparent,
+                ),
+                child: Center(
+                  child: Image.asset(
+                    iconPath,
+                    width: isSelected ? 28 : 28,
+                    height: isSelected ? 28 : 28,
+                    fit: BoxFit.contain,
+                    color: isSelected ? Colors.black : null,
+
+                    alignment: Alignment.centerLeft,
+                  ),
                 ),
               ),
-            ),
 
-            const SizedBox(width: 5),
-            // Label
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.w600,
-                color: isSelected ? Color(0xFF000000) : null,
+              const SizedBox(width: 8),
+              // Label
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w600,
+                  color: isSelected ? Color(0xFF000000) : null,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
