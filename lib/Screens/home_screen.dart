@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: () => Navigator.pop(context),
               child: Icon(
                 Icons.keyboard_arrow_left,
-                color: Colors.black,
+                color: Color(0xFF000000),
                 size: 38,
               ),
             ),
@@ -32,7 +32,8 @@ class _HomeScreenState extends State<HomeScreen> {
         titleTextStyle: const TextStyle(
           fontSize: 24,
           fontWeight: FontWeight.bold,
-          color: Colors.black,
+          fontFamily: "Open Sauce",
+          color: Color(0xFF000000),
         ),
         centerTitle: true,
         actions: [
@@ -41,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Center(
               child: IconButton(
                 onPressed: () {},
-                icon: const Icon(Icons.more_horiz, color: Colors.black, size: 28),
+                icon: const Icon(Icons.more_horiz, color: Color(0xFF000000), size: 28),
               ),
             ),
           ),
@@ -66,7 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   hintText: "Search your speed.....",
                   hintStyle: const TextStyle(
                     fontSize: 18,
-                    color: Color(0xFF575555),
+                    color: Colors.black54,
+                    fontFamily: "Open Sauce",
                     fontWeight: FontWeight.bold,
                   ),
                   filled: true,
@@ -75,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: EdgeInsets.all(12),
                     child: Icon(
                       Icons.search,
-                      color: Color(0xFF575555),
+                      color: Colors.black38,
                       size: 30,
                     ),
                   ),
@@ -127,15 +129,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF393835),
+                      color: Color(0xFF000000),
+                      fontFamily: "Open Sauce",
                     ),
                   ),
                   Text(
                     "View All",
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 12,
+                      fontFamily: "Open Sauce",
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF575555),
+                      color: Color(0xFF000000),
                     ),
                   ),
                 ],
@@ -181,7 +185,8 @@ class _HomeScreenState extends State<HomeScreen> {
         height: 40,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
-          color: isSelected ? Color(0xFF575555).withOpacity(0.7): const Color(0xFF575555).withOpacity(0.3),
+
+          color: isSelected ? Color(0xFF999993): const Color(0xFFb8b8b7),
         ),
         child: Padding(
           padding: const EdgeInsets.only(left: 8),
@@ -193,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 26,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: isSelected ? Colors.white : Colors.transparent,
+                  color: isSelected ? Color(0xFFfff9f4) : null,
                 ),
                 child: Center(
                   child: Image.asset(
@@ -201,7 +206,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: isSelected ? 28 : 28,
                     height: isSelected ? 28 : 28,
                     fit: BoxFit.contain,
-                    color: isSelected ? Colors.black : null,
+                    color: isSelected ? Color(0xFF000000) : null,
 
                     alignment: Alignment.centerLeft,
                   ),
@@ -214,7 +219,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 label,
                 style: TextStyle(
                   fontSize: 10,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Open Sauce",
                   color: isSelected ? Color(0xFF000000) : null,
                 ),
               ),
@@ -240,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFF575555).withValues(alpha: 0.5),
+        color: const Color(0xFFc7c2c2),
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
@@ -266,7 +272,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Container(
             margin: const EdgeInsets.only(left: 4, right: 4),
-            padding: const EdgeInsets.only(top: 18, left: 20, right: 20, bottom: 30),
+            padding: const EdgeInsets.only(top: 18, left: 20, right: 20, bottom: 33),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: Colors.grey.shade100,
@@ -279,14 +285,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(13),
-                    color: Colors.black,
+                    color: Color(0xFF222220),
                   ),
                   child: Text(
                     cars[index]["name"]!,
                     style: const TextStyle(
                       fontSize: 10,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      fontFamily: "Open Sauce",
+                      color: Color(0xFFffffff),
                     ),
                   ),
                 ),
@@ -295,14 +302,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   cars[index]["price"]!,
                   style: const TextStyle(
                     fontSize: 10,
+                    color: Color(0xFF222220),
+                    fontFamily: "Open Sauce",
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
                   ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 5),
                 const Text(
                   "Details-",
-                  style: TextStyle(fontSize: 10, color: Colors.black),
+                  style: TextStyle(fontSize: 10,
+                      color: Colors.black,
+                      fontFamily: "Open Sauce",
+                      fontWeight: FontWeight.bold),
                 ),
               ],
             ),

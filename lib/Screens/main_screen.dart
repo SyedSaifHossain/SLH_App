@@ -40,7 +40,7 @@ class MainScreen extends StatelessWidget {
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
                         fontFamily: "Poppins",
-                        color: Color(0xFF000000),
+                        color: Color(0xFF0f0c0c),
                       ),
                     ),
                     Text(
@@ -48,7 +48,8 @@ class MainScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 42,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF000000),
+                        fontFamily: "Open Sauce",
+                        color: Color(0xFF0f0c0c),
                       ),
                     ),
                     Text(
@@ -56,7 +57,8 @@ class MainScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 42,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF000000),
+                        fontFamily: "Open Sauce",
+                        color: Color(0xFF0f0c0c),
                         height: 0.7,
                       ),
                     ),
@@ -66,7 +68,8 @@ class MainScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF000000),
+                        fontFamily: "Open Sauce",
+                        color: Color(0xFF0f0c0c),
                       ),
                     ),
                   ],
@@ -97,16 +100,16 @@ class MainScreen extends StatelessWidget {
                   );
                 },
                 style:ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF7C7272).withOpacity(0.5),
+                  backgroundColor: Color(0xFF000000).withOpacity(0.3),
                   foregroundColor: Color(0xFF000000),
-                  padding: EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+                  padding: EdgeInsets.symmetric(horizontal: 13, vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
                   textStyle: TextStyle(
-                    fontSize: 24,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
-                    fontFamily: "Poppins",
+                    fontFamily: "Open Sauce",
                   ),
                 ),
                 child: Text("Get Started"),
